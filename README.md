@@ -11,12 +11,7 @@ curl -L https://nixos.org/nix/install | sh
 
 # Tutorial
 
-1. Update dependencies (home-manager and nixpkgs) to the latest version:
-
-   ```sh
-   ./update-dependencies.sh
-   ```
-2. Run the switch script to switch to your configuration:
+Run the switch script to switch to your configuration:
 
     ```sh
     ./switch.sh

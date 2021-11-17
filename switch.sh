@@ -1,1 +1,2 @@
-nix-shell --run "home-manager switch"
+export HOME_MANAGER_CONFIG="./home.nix"
+home-manager switch

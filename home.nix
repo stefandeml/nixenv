@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 let
+  pkgs_64 = import <nixpkgs> { system = "x86_64-darwin"; };
 
   plugins = import ./vim-config/plugins.nix {
     inherit (pkgs) vimUtils fetchFromGitHub;
@@ -55,7 +56,7 @@ in {
   home.username = "yubi";
   home.homeDirectory = "/Users/yubi";
 
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.11";
 
   programs.bash = { enable = true; };
   programs.fish = {
@@ -98,15 +99,15 @@ in {
           end
       end
         '';
-    plugins = [{
-      name = "agnoster";
-      src = pkgs.fetchFromGitHub {
-        owner = "oh-my-fish";
-        repo = "theme-agnoster";
-        rev = "43860ce1536930bca689470e26083b0a5b7bd6ae";
-        sha256 = "16k94hz3s6wayass6g1lhlcjmbpf2w8mzx90qrrqp120h80xwp25";
-      };
-    }];
+    # plugins = [{
+    #   name = "agnoster";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "oh-my-fish";
+    #     repo = "theme-agnoster";
+    #     rev = "43860ce1536930bca689470e26083b0a5b7bd6ae";
+    #     sha256 = "16k94hz3s6wayass6g1lhlcjmbpf2w8mzx90qrrqp120h80xwp25";
+    #   };
+    # }];
   };
 
   # nixpkgs.overlays = [
@@ -115,6 +116,7 @@ in {
   #       "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
   #   }))
   # ];
+  programs.home-manager.enable = true;
 
   programs.starship = {
     enable = true;
@@ -173,8 +175,8 @@ in {
     my_nvim
 
     jq
-    tree
-    niv
+    # tree
+    # niv
 
     # fd
     # gitui
@@ -182,18 +184,24 @@ in {
     # nox
     # patchelf
     # bandwhich
-    # grex # generating regular expressions from user-provided test
+    grex # generating regular expressions from user-provided test
     # procs
     # bottom
-    # zip
-    # unzip
-    # ripgrep
+    zip
+    unzip
+    ripgrep
     # wget
     # curl
 
     # tree-sitter
-    # nushell
+    nushell
+    borgbackup
+    cmake
+    
+    pkgs_64.hello
 
   ];
 
 }
+# TOOD:
+# Add vscode config
